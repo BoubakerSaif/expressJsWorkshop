@@ -2,15 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Home page");
-});
-router.get("/new", (req, res) => {
-  res.send("This is a new page");
+router.post("/", (req, res) => {
+  const { firstName, lastName } = req.body;
+  res.send(`Hello, my name is ${firstName} ${lastName}`);
 });
 
-router.get("/:id", (req, res) => {
-  res.send(`User get with id ${req.params.id}`);
+router.get("/new", (req, res) => {
+  res.render("index");
 });
 
 module.exports = router;
